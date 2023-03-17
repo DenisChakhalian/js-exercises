@@ -1,0 +1,87 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+    // let s = "моя" + "строка";
+    // alert(s); // моястрока
+
+    // alert( '1' + 2 ); // "12"
+    // alert( 2 + '1' ); // "21"
+
+    // alert(2 + 2 + '1' ); // будет "41", а не "221"
+
+    // alert( 6 - '2' ); // 4, '2' приводится к числу
+    // alert( '6' / '2' ); // 3, оба операнда приводятся к числам
+
+    // // Не влияет на числа
+    // let x = 1;
+    // alert( +x ); // 1
+
+    // let y = -2;
+    // alert( +y ); // -2
+
+    // // Преобразует не числа в числа
+    // alert( +true ); // 1
+    // alert( +"" );   // 0
+
+    // let apples = "2";
+    // let oranges = "3";
+
+    // // оба операнда предварительно преобразованы в числа
+    // alert( +apples + +oranges ); // 5
+
+    // // более длинный вариант
+    // // alert( Number(apples) + Number(oranges) ); // 5
+
+    // let a = 1;
+    // let b = 2;
+
+    // let c = 3 - (a = b + 1);
+
+    // alert( a ); // 3
+    // alert( c ); // 0
+
+    // let n = 2;
+    // n += 5; // теперь n = 7 (работает как n = n + 5)
+    // n *= 2; // теперь n = 14 (работает как n = n * 2)
+
+    // alert( n ); // 14
+
+    // let n2 = 2;
+
+    // n2 *= 3 + 5;
+
+    // alert( n2 ); // 16  (сначала выполнится правая часть, выражение идентично n *= 8)
+
+    // let counter = 2;
+    // counter++;        // работает как counter = counter + 1, просто запись короче
+    // alert( counter ); // 3
+
+    // let counter2 = 2;
+    // counter2--;        // работает как counter = counter - 1, просто запись короче
+    // alert( counter2 ); // 1
+
+    // let counter3 = 1;
+    // let a2 = ++counter3; // (*)
+
+    // alert(a2); // 2
+
+    // let counter4 = 1;
+    // let a3 = counter4++; // (*) меняем ++counter на counter++
+
+    // alert(a3); // 1
+
+    let a5 = prompt('First count?', 1);
+    let b5 = prompt('Second count?', 2);
+    alert(+a5 + +b5);
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+</html>

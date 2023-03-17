@@ -1,0 +1,221 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        /*<!--        .slider {-->*/
+        /*<!--            border-radius: 5px;-->*/
+        /*<!--            background: #E0E0E0;-->*/
+        /*<!--            background: linear-gradient(left top, #E0E0E0, #EEEEEE);-->*/
+        /*<!--            width: 310px;-->*/
+        /*<!--            height: 15px;-->*/
+        /*<!--            margin: 5px;-->*/
+        /*<!--        }-->*/
+
+        /*<!--        .thumb {-->*/
+        /*<!--            width: 10px;-->*/
+        /*<!--            height: 25px;-->*/
+        /*<!--            border-radius: 3px;-->*/
+        /*<!--            position: relative;-->*/
+        /*<!--            left: 10px;-->*/
+        /*<!--            top: -5px;-->*/
+        /*<!--            background: blue;-->*/
+        /*<!--            cursor: pointer;-->*/
+        /*<!--        }-->*/
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #field {
+            background: url(https://js.cx/drag-heroes/field.png);
+            width: 800px;
+            height: 600px;
+            float: left;
+        }
+
+        /* герои и мяч (переносимые элементы) */
+
+        .hero {
+            background: url(https://js.cx/drag-heroes/heroes.png);
+            width: 130px;
+            height: 128px;
+            float: left;
+        }
+
+        #hero1 {
+            background-position: 0 0;
+        }
+
+        #hero2 {
+            background-position: 0 -128px;
+        }
+
+        #hero3 {
+            background-position: -120px 0;
+        }
+
+        #hero4 {
+            background-position: -125px -128px;
+        }
+
+        #hero5 {
+            background-position: -248px -128px;
+        }
+
+        #hero6 {
+            background-position: -244px 0;
+        }
+
+        .draggable {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!--<div id="slider" class="slider">-->
+<!--    <div class="thumb"></div>-->
+<!--</div>-->
+
+<h2>Расставьте супергероев по полю.</h2>
+
+<p>Супергерои и мяч - это элементы с классом "draggable". Сделайте так, чтобы их можно было переносить.</p>
+
+<p>Важно: ограничить перетаскивание границами окна. Если супергероя подносят к верхней или нижней границе страницы, она
+    должна автоматически прокручиваться.</p>
+
+<p>Если страница помещается на вашем экране целиком и не имеет вертикальной прокрутки -- сделайте окно браузера меньше,
+    чтобы протестировать эту возможность.</p>
+
+<p>В этой задаче достаточно справиться с вертикальной прокруткой. Обычно нет горизонтальной прокрутки, и она
+    обрабатывается аналогичным образом, если это необходимо.</p>
+
+<p>Да, и ещё: супергерои ни при каких условиях не должны попасть за край экрана.</p>
+
+<div id="field">
+
+</div>
+
+<div class="hero draggable" id="hero1"></div>
+<div class="hero draggable" id="hero2"></div>
+<div class="hero draggable" id="hero3"></div>
+<div class="hero draggable" id="hero4"></div>
+<div class="hero draggable" id="hero5"></div>
+<div class="hero draggable" id="hero6"></div>
+
+<img src="https://en.js.cx/clipart/ball.svg" class="draggable">
+
+<div style="clear:both"></div>
+
+<script>
+
+    // let thumb = document.querySelector(".thumb");
+    // let slider = document.querySelector("#slider");
+    //
+    // thumb.onmousedown = function (event) {
+    //
+    //     let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+    //
+    //     document.addEventListener('mousemove', onMouseMove);
+    //     document.addEventListener('mouseup', onMouseUp);
+    //
+    //     function onMouseMove(event) {
+    //         let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+    //         if (newLeft < 0) {
+    //             newLeft = 0;
+    //         }
+    //         let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+    //         if (newLeft > rightEdge) {
+    //             newLeft = rightEdge;
+    //         }
+    //
+    //         thumb.style.left = newLeft + 'px';
+    //     }
+    //
+    //     function onMouseUp() {
+    //         document.removeEventListener('mouseup', onMouseUp);
+    //         document.removeEventListener('mousemove', onMouseMove);
+    //     }
+    //
+    //
+    // };
+    //
+    // thumb.ondragstart = function () {
+    //     return false;
+    // };
+    // document.ondragstart = function () {
+    //     return false;
+    // };
+    // document.onmousedown = function () {
+    //     return false;
+    // };
+
+
+    let ball;
+
+    document.onmousedown = function (event) {
+        event.preventDefault();
+        if (!event.target.classList.contains("draggable")) return;
+        ball = event.target;
+        let shiftX = event.clientX - ball.getBoundingClientRect().left;
+        let shiftY = event.clientY - ball.getBoundingClientRect().top;
+        ball.ondragstart = function () {
+            return false;
+        };
+        ball.style.position = 'absolute';
+        ball.style.zIndex = 1000;
+        document.body.append(ball);
+
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            let left = pageX - shiftX;
+            let top = pageY - shiftY;
+            if (left < 0) {
+                left = 0;
+            } else if (left > document.body.offsetWidth - ball.offsetWidth) {
+                left = document.body.offsetWidth - ball.offsetWidth;
+            }
+            if(top<0) {
+                top = 0;
+            }
+            else if (top>document.body.offsetHeight - ball.offsetHeight) {
+                top = document.body.offsetHeight - ball.offsetHeight;
+            }
+            ball.style.left = left + 'px';
+            ball.style.top = top + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        ball.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            ball.onmouseup = null;
+        };
+
+    };
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<br>
+<br>
+<br>
+<br>
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

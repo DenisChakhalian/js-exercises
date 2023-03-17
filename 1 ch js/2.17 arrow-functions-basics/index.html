@@ -1,0 +1,20 @@
+<!doctype html>
+
+<body>
+
+    <p>Перед скриптом...</p>
+
+    <script>
+
+    let ask = (question, yes, no) => confirm(question) ? yes() : no();
+    ask('Accept?', () => alert('yes.'), () => alert('no.'));
+
+    </script>
+
+    <!-- <script src="./script.js"></script> -->
+
+    <p>...После скрипта.</p>
+
+</body>
+
+</html>

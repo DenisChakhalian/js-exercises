@@ -1,0 +1,306 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        /*#field {*/
+        /*    width: 200px;*/
+        /*    height: 150px;*/
+        /*    border: 10px solid black;*/
+        /*    background-color: #00FF00;*/
+        /*    overflow: hidden;*/
+        /*}*/
+
+        /*.menu .title::before {*/
+        /*    content: '▶ ';*/
+        /*    font-size: 80%;*/
+        /*    color: green;*/
+        /*}*/
+        /*.menu.open .title::before {*/
+        /*    content: '▼ ';*/
+        /*}*/
+        /*ul {*/
+        /*    display: none;*/
+        /*}*/
+
+        /*body {*/
+        /*    margin: 10px auto;*/
+        /*    width: 470px;*/
+        /*}*/
+
+        /*h3 {*/
+        /*    margin: 0;*/
+        /*    padding-bottom: .3em;*/
+        /*    font-size: 1.1em;*/
+        /*}*/
+
+        /*p {*/
+        /*    margin: 0;*/
+        /*    padding: 0 0 .5em;*/
+        /*}*/
+
+        /*.pane {*/
+        /*    background: #edf5e1;*/
+        /*    padding: 10px 20px 10px;*/
+        /*    border-top: solid 2px #c4df9b;*/
+        /*}*/
+
+        /*.remove-button {*/
+        /*    float:right;*/
+        /*    font-size: 110%;*/
+        /*    color: darkred;*/
+        /*    right: 10px;*/
+        /*    width: 24px;*/
+        /*    height: 24px;*/
+        /*    border: none;*/
+        /*    background: transparent;*/
+        /*    cursor: pointer;*/
+        /*}*/
+
+        body {
+            padding: 10px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 398px;
+            padding: 10px 40px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            background: #eee;
+        }
+
+        .carousel img {
+            width: 130px;
+            height: 130px;
+            /* делаем этот элемент блочным, чтобы убрать лишнее пространство вокруг картинок */
+            display: block;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 60px;
+            padding: 0;
+            background: #ddd;
+            border-radius: 15px;
+            border: 1px solid gray;
+            font-size: 24px;
+            line-height: 24px;
+            color: #444;
+            display: block;
+        }
+
+        .arrow:focus {
+            outline: none;
+        }
+
+        .arrow:hover {
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 7px;
+        }
+
+        .next {
+            right: 7px;
+        }
+
+        .gallery {
+            width: 390px;
+            overflow: hidden;
+        }
+
+        .gallery ul {
+            height: 130px;
+            width: 9999px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            transition: margin-left 250ms;
+            /* удаляем пустое пространство между элементами li, у которых установлен inline-block */
+            /* http://davidwalsh.name/remove-whitespace-inline-block */
+            font-size: 0;
+        }
+
+        .gallery li {
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body style="height:2000px">
+
+<!--<input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />-->
+
+<!--<div id="text">Текст</div>-->
+
+<!--Нажмите на поле для перемещения мяча.-->
+<!--<br> Мяч не должен выходить за границы поля.-->
+<!--<div id="field">-->
+<!--    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . .-->
+<!--</div>-->
+
+<!--<div class="menu">-->
+<!--    <span class="title">Сладости (нажми меня)!</span>-->
+<!--    <ul>-->
+<!--        <li>Пирожное</li>-->
+<!--        <li>Пончик</li>-->
+<!--        <li>Мёд</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--Код кнопки (возможно вам нужно будет изменить CSS):-->
+<!--<button class="remove-button">[x]</button>-->
+<!--<div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Лошадь</h3>-->
+<!--        <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>-->
+<!--    </div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Осёл</h3>-->
+<!--        <p>Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид дикого осла (Equus asinus), сыгравший важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в хозяйстве многих развивающихся стран.</p>-->
+<!--    </div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Кошка</h3>-->
+<!--        <p>Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее животное, одно из наиболее популярных(наряду с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других мелких животных, кошка — социальное животное, использующее для общения широкий диапазон звуковых сигналов.</p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div id="carousel" class="carousel">
+    <button class="arrow prev">⇦</button>
+    <div class="gallery">
+        <ul>
+            <li><img src="https://ru.js.cx/carousel/1.png"></li>
+            <li><img src="https://ru.js.cx/carousel/2.png"></li>
+            <li><img src="https://ru.js.cx/carousel/3.png"></li>
+            <li><img src="https://ru.js.cx/carousel/4.png"></li>
+            <li><img src="https://ru.js.cx/carousel/5.png"></li>
+            <li><img src="https://ru.js.cx/carousel/6.png"></li>
+            <li><img src="https://ru.js.cx/carousel/7.png"></li>
+            <li><img src="https://ru.js.cx/carousel/8.png"></li>
+            <li><img src="https://ru.js.cx/carousel/9.png"></li>
+            <li><img src="https://ru.js.cx/carousel/10.png"></li>
+        </ul>
+    </div>
+    <button class="arrow next">⇨</button>
+</div>
+
+<script>
+
+    // hider.addEventListener("click",() => {
+    //     text.style.display = "none";
+    // });
+
+    // hider.addEventListener("click",() => {
+    //     hider.style.display = "none";
+    // });
+
+    // let ball = document.getElementById("ball");
+    // let field = document.getElementById("field");
+    //
+    // ball.style.position = "absolute";
+    // ball.style.transition = "all 1s";
+    //
+    // function goTo(event) {
+    //     let coords = field.getBoundingClientRect();
+    //     let ballX = event.clientX + pageXOffset - ball.offsetWidth / 2;
+    //     let ballY = event.clientY + pageYOffset - ball.offsetHeight / 2;
+    //     let startX = coords.left + pageXOffset + field.clientLeft;
+    //     let startY = coords.top + pageYOffset + field.clientTop;
+    //     if (ballX < (startX)) {
+    //         ballX = startX;
+    //     } else if ((ballX + ball.offsetWidth) > (startX + field.clientWidth)) {
+    //         ballX = startX + field.clientWidth - ball.offsetWidth;
+    //     }
+    //     if (ballY < (startY)) {
+    //         ballY = startY;
+    //     } else if ((ballY + ball.offsetHeight) > (startY + field.clientHeight)) {
+    //         ballY = startY + field.clientHeight - ball.offsetHeight;
+    //     }
+    //     ball.style.left = ballX + "px";
+    //     ball.style.top = ballY + "px";
+    // }
+    //
+    // field.addEventListener("click", goTo);
+
+    // let title = document.querySelector(".title");
+    // let menu = document.querySelector("div");
+    // let ul = document.querySelector("ul");
+    // title.addEventListener("click",() => {
+    //     if (menu.className === "menu") {
+    //         menu.classList.add("open");
+    //         ul.style.display = "block";
+    //     }
+    //     else {
+    //         menu.classList.remove("open");
+    //         ul.style.display = "none";
+    //     }
+    // });
+    //or https://learn.javascript.ru/task/sliding-menu
+
+    // let massages = document.querySelectorAll(".pane");
+    // massages.forEach((massage) => {
+    //     massage.insertAdjacentHTML("afterbegin", "<button class='remove-button'>[x]</button>");
+    // })
+    //
+    // let buttons = document.querySelectorAll(".remove-button");
+    // buttons.forEach((button) => {
+    //     // button.style.left = document.querySelector(".pane").getBoundingClientRect().right + "px";
+    //     button.addEventListener("click", () => {
+    //         button.parentNode.style.display = "none";
+    //     });
+    // })
+    //or https://learn.javascript.ru/task/hide-message
+
+    /* этот код помечает картинки, для удобства разработки */
+    let i = 1;
+    for(let li of carousel.querySelectorAll('li')) {
+        li.style.position = 'relative';
+        li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+        i++;
+    }
+
+    /* конфигурация */
+    let width = 130; // ширина картинки
+    let count = 3; // видимое количество изображений
+
+    let list = carousel.querySelector('ul');
+    let listElems = carousel.querySelectorAll('li');
+
+    let position = 0; // положение ленты прокрутки
+
+    carousel.querySelector('.prev').onclick = function() {
+        // сдвиг влево
+        position += width * count;
+        // последнее передвижение влево может быть не на 3, а на 2 или 1 элемент
+        position = Math.min(position, 0)
+        list.style.marginLeft = position + 'px';
+    };
+
+    carousel.querySelector('.next').onclick = function() {
+        // сдвиг вправо
+        position -= width * count;
+        // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
+        position = Math.max(position, -width * (listElems.length - count));
+        list.style.marginLeft = position + 'px';
+    };
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

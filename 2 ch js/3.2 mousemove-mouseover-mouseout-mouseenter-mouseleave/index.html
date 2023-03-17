@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .hours {
+            color: red;
+        }
+
+        .minutes {
+            color: green;
+        }
+
+        .seconds {
+            color: blue;
+        }
+
+        .clock {
+            border: 1px dashed black;
+            padding: 5px;
+            display: inline-block;
+            background: yellow;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #eee;
+            border: 1px brown solid;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--<div data-tooltip="Здесь домашний интерьер" id="house">-->
+<!--    <div data-tooltip="Здесь крыша" id="roof"></div>-->
+
+<!--    <p>Жили-были на свете три поросенка. Три брата. Все одинакового роста, кругленькие, розовые, с одинаковыми веселыми-->
+<!--        хвостиками.</p>-->
+
+<!--    <p>Даже имена у них были похожи. Звали поросят: Ниф-Ниф, Нуф-Нуф и Наф-Наф. Все лето они кувыркались в зеленой-->
+<!--        траве, грелись на солнышке, нежились в лужах.</p>-->
+
+<!--    <p>Но вот наступила осень. Солнце уже не так сильно припекало, серые облака тянулись над пожелтевшим лесом.</p>-->
+
+<!--    <p>- Пора нам подумать о зиме, - сказал как-то Наф-Наф. <a-->
+<!--            href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B8_%D0%BF%D0%BE%D1%80%D0%BE%D1%81%D1%91%D0%BD%D0%BA%D0%B0"-->
+<!--            data-tooltip="Читать далее…">Наведи курсор на меня</a></p>-->
+
+<!--</div>-->
+
+<div id="elem" class="clock">
+    <span class="hours">12</span> :
+    <span class="minutes">30</span> :
+    <span class="seconds">00</span>
+</div>
+
+<!--<div id="tooltip" hidden>Подсказка</div>-->
+
+<script>
+
+    // let elem;
+    //
+    // document.onmouseover = function (event) {
+    //     let tooltip = event.target.closest('[data-tooltip]');
+    //     if (!tooltip) return;
+    //     elem = addElem(tooltip, tooltip.dataset.tooltip);
+    // };
+    //
+    // document.onmouseout = function () {
+    //     if (elem) {
+    //         elem.remove();
+    //         elem = false;
+    //     }
+    //
+    // };
+    //
+    // function addElem(target, targetText) {
+    //     let div;
+    //
+    //     // if (!targetText) return;
+    //     let button = target.getBoundingClientRect();
+    //     div = document.createElement("div");
+    //     div.classList.add("tooltip");
+    //     div.innerHTML = targetText;
+    //     document.body.append(div);
+    //     div.style.left = button.left + (button.width - div.offsetWidth) / 2 + "px";
+    //     if (div.getBoundingClientRect().left < 5) {
+    //         div.style.left = 5 + "px";
+    //     }
+    //     div.style.top = (button.top - div.offsetHeight - 5) + "px";
+    //     if (window.pageYOffset > div.getBoundingClientRect().top) {
+    //         div.style.top = (button.top + button.height + 5) + "px"
+    //     }
+    //     return div;
+    // }
+
+    let elem = document.querySelector("#elem");
+    let timer;
+
+    let tooltip = document.createElement('div');
+    tooltip.className = "tooltip";
+    tooltip.innerHTML = "Tooltip";
+
+    elem.addEventListener("mouseenter", (event)=> {
+        timer = setTimeout(()=>{
+            tooltip.style.left = elem.getBoundingClientRect().left + 'px';
+            tooltip.style.top = elem.getBoundingClientRect().bottom + 5 + 'px';
+            document.body.append(tooltip);
+        }, 1000);
+
+    })
+    elem.addEventListener("mouseleave", (event)=> {
+        if(timer) clearTimeout(timer);
+        timer = null;
+        tooltip.remove();
+    })
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<br>
+<br>
+<br>
+<br>
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

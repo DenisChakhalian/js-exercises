@@ -1,0 +1,57 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function unique(arr) {
+    //     let sort = new Set();
+    //     for (let val of arr) {
+    //         sort.add(val);
+    //     }
+    //     return Array.from(sort);
+    //orrrr
+    //     return Array.from(new Set(arr));
+    // }
+    //
+    // let values = ["Hare", "Krishna", "Hare", "Krishna",
+    //     "Krishna", "Krishna", "Hare", "Hare", ":-O"
+    // ];
+    //
+    // alert(unique(values)); // Hare,Krishna,:-O
+
+    // let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+    //
+    // function aclean(arr) {
+    //     let map = new Map();
+    //     for (let word of arr) {
+    //         let sortWord = word.toLowerCase().split("").sort().join("");
+    //         map.set(sortWord, word);
+    //     }
+    //     return Array.from(map.values());
+    // }
+    //
+    // alert(aclean(arr));
+
+    let map = new Map();
+
+    map.set("name", "John");
+
+    let keys = Array.from(map.keys());
+
+    // Error: keys.push is not a function
+    // Ошибка: keys.push -- это не функция
+    keys.push("more");
+    alert(keys);
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

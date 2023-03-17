@@ -1,0 +1,100 @@
+<!doctype html>
+
+<head>
+
+
+    <style>
+        #field {
+            height: 200px;
+            border-bottom: 3px black groove;
+            position: relative;
+        }
+
+        #ball {
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" width="40" height="40" id="ball">
+</div>
+
+
+<script>
+
+    function makeEaseOut(timing) {
+        return function(timeFraction) {
+            return 1 - timing(1 - timeFraction);
+        }
+    }
+
+    function bounce(timeFraction) {
+        for (let a = 0, b = 1; 1; a += b, b /= 2) {
+            if (timeFraction >= (7 - 4 * a) / 11) {
+                return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+            }
+        }
+    }
+
+    let bounceEaseOut = makeEaseOut(bounce);
+
+    ball.onclick = function() {
+        animate({
+            duration: 3000,
+            timing(timeFraction) {
+                return Math.pow(timeFraction, 2);
+            },
+            draw: function(progress) {
+                ball.style.left = 100 * progress + "px"
+            }
+        });
+
+        //or https://plnkr.co/edit/5l7n4AysSxfg6AO0?p=preview&preview
+
+        animate({
+            duration: 3000,
+            timing: bounceEaseOut,
+            draw: function(progress) {
+                ball.style.top = progress * field.offsetHeight - ball.offsetHeight - 3 + 'px';
+            }
+        });
+
+        //or https://plnkr.co/edit/k1XB00vHN87DQfKl?p=preview&preview
+    };
+
+
+    function animate(options) {
+
+        var start = performance.now();
+
+        requestAnimationFrame(function animate(time) {
+            // timeFraction от 0 до 1
+            var timeFraction = (time - start) / options.duration;
+            if (timeFraction > 1) timeFraction = 1;
+
+            // текущее состояние анимации
+            var progress = options.timing(timeFraction)
+
+            options.draw(progress);
+
+            if (timeFraction < 1) {
+                requestAnimationFrame(animate);
+            }
+
+        });
+    }
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

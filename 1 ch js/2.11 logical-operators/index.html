@@ -1,0 +1,45 @@
+<!doctype html>
+
+<body>
+
+    <p>Перед скриптом...</p>
+
+    <script>
+
+        // age = 54;
+        // if (age >= 14 && age <= 90);
+
+        // age2 = 54;
+        // if(!(age2>=14 && age2<=90));
+
+        // age3 = 54;
+        // if(age3<=14 && age3>=90);
+
+        let kto = prompt('Кто там?', '');
+        if (kto === 'Админ') {
+            let pass = prompt('Пароль?', '');
+            if (pass === 'Я главный') {
+                alert('Здравствуйте!');
+            }
+            else if (!pass) {
+                alert('Отмена');
+            }
+            else {
+                alert('Неверный пароль!');
+            }
+        }
+        else if (!kto) {
+            alert('Отмена');
+        }
+        else {
+            alert('Я вас не знаю!');
+        }
+    </script>
+
+    <!-- <script src="./script.js"></script> -->
+
+    <p>...После скрипта.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function printNumbers(from, to) {
+    //     let inter = setInterval(() => {
+    //         if (from <= to) {
+    //             alert(from);
+    //             from += 1;
+    //         } else {
+    //             clearInterval(inter);
+    //         }
+    //     }, 1000);
+    // }
+
+    function printNumbers(from, to) {
+        let inter = setTimeout(function tick() {
+            if (from <= to) {
+                alert(from);
+                from += 1;
+                inter = setTimeout(tick, 1000);
+            }
+        }, 1000);
+    }
+
+    printNumbers(5, 10);
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

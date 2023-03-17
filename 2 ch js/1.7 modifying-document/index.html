@@ -1,0 +1,309 @@
+<!doctype html>
+
+<html>
+
+<!--<head>-->
+<style>
+    /*table {*/
+    /*    border-collapse: collapse;*/
+    /*}*/
+
+    /*td,*/
+    /*th {*/
+    /*    border: 1px solid black;*/
+    /*    padding: 3px;*/
+    /*    text-align: center;*/
+    /*}*/
+
+    /*th {*/
+    /*    font-weight: bold;*/
+    /*    background-color: #E6E6E6;*/
+    /*}*/
+
+    .hour {
+        color: #cf4ad9;
+    }
+
+    .min {
+        color: #58ff9b;
+    }
+
+    .sec {
+        color: #5a86c0;
+    }
+</style>
+<!--</head>-->
+
+<body>
+
+<!--<ol id="elem">-->
+<!--    <li>Привет</li>-->
+<!--    <li>Мир</li>-->
+<!--</ol>-->
+
+<!--<ul>-->
+<!--</ul>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div id="tree"></div>-->
+
+<!--<ul>-->
+<!--    <li>Животные-->
+<!--        <ul>-->
+<!--            <li>Млекопитающие-->
+<!--                <ul>-->
+<!--                    <li>Коровы</li>-->
+<!--                    <li>Ослы</li>-->
+<!--                    <li>Собаки</li>-->
+<!--                    <li>Тигры</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li>Другие-->
+<!--                <ul>-->
+<!--                    <li>Змеи</li>-->
+<!--                    <li>Птицы</li>-->
+<!--                    <li>Ящерицы</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li>Рыбы-->
+<!--        <ul>-->
+<!--            <li>Аквариумные-->
+<!--                <ul>-->
+<!--                    <li>Гуппи</li>-->
+<!--                    <li>Скалярии</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li>Морские-->
+<!--                <ul>-->
+<!--                    <li>Морская форель</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!--<div id="calendar"></div>-->
+
+<!--<div id="clock">-->
+<!--    <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>-->
+<!--</div>-->
+<!--&lt;!&ndash; клик по этой кнопке вызовет clockStart() &ndash;&gt;-->
+<!--<input type="button" onclick="clockStart()" value="Старт">-->
+<!--&lt;!&ndash; клик по этой кнопке вызовет clockStop() &ndash;&gt;-->
+<!--<input type="button" onclick="clockStop()" value="Стоп">-->
+
+<!--<ul id="ul">-->
+<!--    <li id="one">1</li>-->
+<!--    <li id="two">4</li>-->
+<!--</ul>-->
+
+<table id="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>John</td>
+        <td>Smith</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Pete</td>
+        <td>Brown</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>Ann</td>
+        <td>Lee</td>
+        <td>5</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+
+    // function clear(elem) {
+    //     let list = elem.querySelectorAll("li");
+    //     for (let i = 0; i <= list.length - 1; i++) {
+    //         list[i].remove();
+    //     }
+    // }
+    // //or
+    // // function clear(elem) {
+    // //     while (elem.firstChild) {
+    // //         elem.firstChild.remove();
+    // //     }
+    // // }
+    // //or
+    // // function clear(elem) {
+    // //     elem.innerHTML = '';
+    // // }
+    //
+    // clear(elem); // очищает список
+
+    // let box = document.querySelector("ul");
+    //
+    // while (true) {
+    //     let liCon = prompt("li?","1");
+    //     if (!liCon) {
+    //         break
+    //     }
+    //     let el = document.createElement("li");
+    //     el.textContent = liCon;
+    //     box.append(el);
+    // }
+
+    // let data = {
+    //     "Рыбы": {
+    //         "форель": {},
+    //         "лосось": {}
+    //     },
+    //
+    //     "Деревья": {
+    //         "Огромные": {
+    //             "секвойя": {},
+    //             "дуб": {}
+    //         },
+    //         "Цветковые": {
+    //             "яблоня": {},
+    //             "магнолия": {}
+    //         }
+    //     }
+    // };
+    //
+    // function createTree(container, data) {
+    //     if(!Object.keys(data).length) return;
+    //     let ul = document.createElement("ul");
+    //     container.append(ul);
+    //     for (let el in data) {
+    //         let li = document.createElement("li");
+    //         li.innerHTML = el;
+    //         ul.append(li);
+    //         console.log(data[el])
+    //         createTree(li, data[el]);
+    //     }
+    // }
+    //
+    // createTree(document.getElementById('tree'), data);
+    // or
+    // https://learn.javascript.ru/task/create-object-tree
+
+    // function num(ul) {
+    //     let lis = ul.children;
+    //     for (let i = 0; i <= lis.length - 1; i++) {
+    //         if (lis[i].querySelectorAll("li").length !== 0) {
+    //             lis[i].prepend(`[${lis[i].querySelectorAll("li").length}]`);
+    //             num(lis[i].querySelector("ul"));
+    //         }
+    //     }
+    //
+    // }
+    //
+    // num(document.querySelector("ul"));
+    // //or
+    // //https://learn.javascript.ru/task/tree-count
+
+    // function createCalendar(elem, year, month) {
+    //     let date = new Date(year, month-1);
+    //     let lastDay = new Date(year, month, 0);
+    //     let table = document.createElement("table");
+    //     let tbody = document.createElement("tbody");
+    //     elem.append(table);
+    //     table.append(tbody);
+    //     tbody.innerHTML = "<tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr>";
+    //     tbody.insertAdjacentHTML("beforeend", "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+    //     console.log(date);
+    //     let weakDay = +date.getDay()-1;
+    //     for(let i = 1; i<=lastDay.getDate(); i++) {
+    //         if (weakDay%7===0) {
+    //             tbody.insertAdjacentHTML("beforeend", "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+    //         }
+    //         tbody.querySelectorAll("td")[weakDay].append(`${i}`);
+    //         weakDay++;
+    //         console.log(weakDay)
+    //     }
+    //     console.log(date.getDay())
+    // }
+    //
+    // createCalendar(calendar, 2013, 10);
+
+    // let hours = document.getElementsByClassName("hour")[0];
+    // let min = document.getElementsByClassName("min")[0];
+    // let sec = document.getElementsByClassName("sec")[0];
+    //
+    // let clock;
+    //
+    // function clockStart() {
+    //     clock = setInterval(()=>{
+    //         let date = new Date();
+    //         hours.firstChild.data = date.getHours();
+    //         min.firstChild.data = date.getMinutes();
+    //         sec.firstChild.data = date.getSeconds();
+    //     },1000);
+    // }
+    //
+    // function clockStop() {
+    //     clearInterval(clock);
+    // }
+
+    // let lis = document.querySelectorAll("li");
+    // let centerLi = lis[(lis.length/2)-1];
+    // centerLi.insertAdjacentHTML("afterend","<li>2</li><li>3</li>");
+
+    // let tbody = document.querySelector("tbody");
+    // let trs = tbody.querySelectorAll("tr");
+    // let arr = [];
+    // let arrText = [];
+    // let users = [];
+    // for (let tr of trs) {
+    //     if (tr.querySelectorAll("td")[0].innerHTML !== "...") {
+    //         arr.push(tr);
+    //         arrText.push(tr.cells[0].innerHTML);
+    //         let tds = [];
+    //         for (let td of tr.querySelectorAll("td")) {
+    //             tds.push(td);
+    //         }
+    //         users.push(tds);
+    //     }
+    // }
+    // console.log(users)
+    // console.log(arrText)
+    // users.sort((a, b) => {
+    //         if (a[0] > b[0]) {
+    //             arr[a].after(arr[b]);
+    //         }
+    //         if (a[0] === b[0]) return 0;
+    //         if (a[0] < b[0]) {
+    //             arr[b].after(arr[a]);
+    //         }
+    // })
+    // console.log(users)
+    //but............
+    let sortedRows = Array.from(table.rows)
+        .slice(1)
+        .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
+
+    table.tBodies[0].append(...sortedRows);
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

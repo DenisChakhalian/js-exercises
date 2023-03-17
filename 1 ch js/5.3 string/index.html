@@ -1,0 +1,64 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // 1 вариант
+    // function ucFirst(str) {
+    //     return str[0].toUpperCase() + str.slice(1);
+    // }
+    // alert(ucFirst("вася") === "Вася");
+    //
+    // 2 вариант
+    // function ucFirst(str) {
+    //     if (!str) return str;
+    //
+    //     return str[0].toUpperCase() + str.slice(1);
+    // }
+    //
+    // alert( ucFirst("вася") ); // Вася
+
+    // function checkSpam(str) {
+    //     return str.toLowerCase().includes('viagra') || str.toLowerCase().includes('xx');
+    // }
+    //
+    // alert(checkSpam('buy ViAgRA now'));
+    // alert(checkSpam('free xxxxx'));
+    // alert(checkSpam("innocent rabbit"));
+
+    // function truncate(str, maxlength) {
+    //     if (str.length >= maxlength) {
+    //         return str.slice(0, maxlength - 1) + "…";
+    //     }
+    //     else {
+    //         return str;
+    //     }
+    // }
+    //
+    // alert(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20));
+    //
+    // alert(truncate("Всем привет!", 20));
+
+    function extractCurrencyValue(str) {
+        return +str.slice(1, str.length);
+    }
+
+    // или
+    function extractCurrencyValue2(str) {
+        return +str.slice(1);
+    }
+
+    alert(extractCurrencyValue('$120') === 120);
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

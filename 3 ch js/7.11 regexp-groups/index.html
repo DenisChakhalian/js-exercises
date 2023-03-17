@@ -1,0 +1,38 @@
+<!doctype html>
+
+
+<body>
+
+<html>
+<body>
+
+<script>
+
+    // let regexp = /-?\d+(\.\d+)?/g;
+    //
+    // let str = "-1.5 0 2 -123.4.";
+    //
+    // alert( str.match(regexp) ); // -1.5, 0, 2, -123.4
+
+
+    let [a, op, b] = parse("1.2 - 3.4");
+
+    alert(a); // 1.2
+    alert(op); // *
+    alert(b); // 3.4
+
+    function parse (str) {
+        let numbers = str.match(/-?\d+(\.\d+)?/g);
+        let cher = str.match(/[+*/-]/);
+        return [numbers[0],cher[0],numbers[1]];
+    }
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

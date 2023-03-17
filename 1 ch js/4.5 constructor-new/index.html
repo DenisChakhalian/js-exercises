@@ -1,0 +1,52 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function Calculator() {
+    //     this.read = function () {
+    //         this.a = +prompt("a?", "");
+    //         this.b = +prompt("b?", "");
+    //     };
+    //
+    //     this.sum = function () {
+    //         return this.a + this.b;
+    //     };
+    //     this.mul = function () {
+    //         return this.a * this.b;
+    //     };
+    // }
+    //
+    // let calculator = new Calculator();
+    // calculator.read();
+    // alert("Sum=" + calculator.sum());
+    // alert("Mul=" + calculator.mul());
+
+
+    function Accumulator(value) {
+        this.value = value;
+        this.read = function () {
+            this.value += +prompt("+?","");
+        }
+    }
+
+    let accumulator = new Accumulator(1); // начальное значение 1
+
+    accumulator.read(); // прибавит ввод prompt к текущему значению
+    accumulator.read(); // прибавит ввод prompt к текущему значению
+
+    alert(accumulator.value); // выведет сумму этих значений
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

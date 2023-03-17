@@ -1,0 +1,280 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function ucFirst(item, index) {
+    //     if (!item) return item;
+    //     if (index >= 1) {
+    //         return item[0].toUpperCase() + item.slice(1);
+    //     }
+    //     return item;
+    // }
+    //
+    // function camelize(str) {
+    //     let arr = str.split("-").map(ucFirst);
+    //     return arr.join("");
+    // }
+    //or
+    // function camelize(str) {
+    //     return str
+    //         .split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+    //         .map(
+    //             // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого
+    //             // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+    //             (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+    //         )
+    //         .join(''); // соединяет ['my', 'Long', 'Word'] в 'myLongWord'
+    // }
+    //call
+    // alert(camelize("background-color"));
+    // alert(camelize("list-style-image"));
+    // alert(camelize("-webkit-transition"));
+
+    // function filterRange(array, a, b) {
+    //     let range = [];
+    //     let j = 0;
+    //     for (let i = 0; i < array.length; i++) {
+    //         if (array[i] >= a && array[i] <= b) {
+    //             range[j] = array[i];
+    //             j++;
+    //         }
+    //     }
+    //     return range;
+    // }
+    //ORRRRRRRRRRRRRR
+    // function filterRange(arr, a, b) {
+    //     // добавлены скобки вокруг выражения для улучшения читабельности
+    //     return arr.filter(item => (a <= item && item <= b));
+    // }
+    //
+    // let arr = [5, 3, 8, 1];
+    //
+    // let filtered = filterRange(arr, 1, 4);
+    //
+    // alert(filtered); // 3,1 (совпадающие значения)
+    //
+    // alert(arr); // 5,3,8,1 (без изменений)
+
+    // function filterRangeInPlace(arr, a, b) {
+    //     // добавлены скобки вокруг выражения для улучшения читабельности
+    //     arr.map((item, index) => {
+    //         if (item < a || item > b) {
+    //             arr.splice(index,1);
+    //         }
+    //     })
+    // }
+    //
+    // let arr = [5, 3, 8, 1];
+    //
+    // filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+    //
+    // alert(arr); // [3, 1]
+
+    // let arr = [5, 2, 1, -10, 8];
+    //
+    // arr.sort((a, b) => b - a);
+    //
+    // alert(arr); // 8, 5, 2, 1, -10
+
+    // function copySorted(arr) {
+    //     let mas = arr.slice();
+    //     return mas.sort();
+    //     //or
+    //     // return arr.slice().sort();
+    // }
+    //
+    // let arr = ["HTML", "JavaScript", "CSS"];
+    //
+    // let sorted = copySorted(arr);
+    //
+    // alert( sorted ); // CSS, HTML, JavaScript
+    // alert( arr ); // HTML, JavaScript, CSS (без изменений)
+
+    // function Calculator() {
+    //     this.calculate = function (str) {
+    //         let arr = str.split(" ");
+    //         arr[0] = +arr[0];
+    //         arr[2] = +arr[2];
+    //         console.log(arr[1]);
+    //         return arr[1] === "+" ? arr[0] + arr[2] : "-" ? arr[0] - arr[2] : 0;
+    //     }
+    // }
+    // let calc = new Calculator;
+    // alert(calc.calculate("3 + 7")); // 10
+    // alert(calc.calculate("3 - 7")); // 10
+
+    // function Calculator() {
+    //
+    //     this.math = [
+    //         {
+    //             name: '+',
+    //             func: (a, b) => a + b,
+    //         },
+    //         {
+    //             name: '-',
+    //             func: (a, b) => a - b,
+    //         },
+    //     ]
+    //     this.calculate = function (str) {
+    //         let arr = str.split(" ");
+    //         let item = this.math.filter((el) => el.name === arr[1]);
+    //         return item[0].func(+arr[0],+arr[2]);
+    //     }
+    //
+    //     this.addMethod = function (name, func) {
+    //         let nameArray = this.math.map((el) => el.name);
+    //         if (!nameArray.includes(name)) {
+    //             this.math.push({
+    //                 name,
+    //                 func,
+    //             });
+    //         }
+    //
+    //     }
+    // }
+    //or
+    //     function Calculator() {
+    //
+    //         this.methods = {
+    //             "-": (a, b) => a - b,
+    //             "+": (a, b) => a + b
+    //         };
+    //
+    //         this.calculate = function(str) {
+    //
+    //             let split = str.split(' '),
+    //                 a = +split[0],
+    //                 op = split[1],
+    //                 b = +split[2]
+    //
+    //             if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+    //                 return NaN;
+    //             }
+    //
+    //             return this.methods[op](a, b);
+    //         }
+    //
+    //         this.addMethod = function(name, func) {
+    //             this.methods[name] = func;
+    //         };
+    //     }
+    //
+    // let powerCalc = new Calculator;
+    // powerCalc.addMethod("*", (a, b) => a * b);
+    // powerCalc.addMethod("/", (a, b) => a / b);
+    // powerCalc.addMethod("**", (a, b) => a ** b);
+    //
+    // let result = powerCalc.calculate("2 ** 3");
+    // alert(result); // 8
+
+    // let vasya = {name: "Вася", age: 25};
+    // let petya = {name: "Петя", age: 30};
+    // let masha = {name: "Маша", age: 28};
+    //
+    // let users = [vasya, petya, masha];
+    //
+    // let names = users.map((el) => el.name);
+    //
+    // alert(names); // Вася, Петя, Маша
+
+    // let vasya = {name: "Вася", surname: "Пупкин", id: 1};
+    // let petya = {name: "Петя", surname: "Иванов", id: 2};
+    // let masha = {name: "Маша", surname: "Петрова", id: 3};
+    //
+    // let users = [vasya, petya, masha];
+    //
+    // let usersMapped = users.map((item) => ({
+    //     id: item.id,
+    //     fullName: item.name + " " + item.surname,
+    // }));
+    //
+    // alert(usersMapped[0].id) // 1
+    // alert(usersMapped[0].fullName) // Вася Пупкин
+
+    // function sortByAge(arr) {
+    //     arr.sort((a,b) => a.age - b.age);
+    //  or
+    //     arr.sort((a, b) => a.age > b.age ? 1 : -1);
+    // }
+    //
+    // let vasya = { name: "Вася", age: 25 };
+    // let petya = { name: "Петя", age: 30 };
+    // let masha = { name: "Маша", age: 28 };
+    //
+    // let arr = [ vasya, petya, masha ];
+    //
+    // sortByAge(arr);
+    //
+    // // теперь: [vasya, masha, petya]
+    // alert(arr[0].name); // Вася
+    // alert(arr[1].name); // Маша
+    // alert(arr[2].name); // Петя
+
+    // function shuffle(array) {
+    //     array.sort(() => Math.random() - 0.5);
+    // }
+    // or
+    // function shuffle(array) {
+    //     for (let i = array.length - 1; i > 0; i--) {
+    //         let j = Math.floor(Math.random() * (i + 1));
+    //         [array[i], array[j]] = [array[j], array[i]];
+    //     }
+    // }
+    //
+    // let arr = [1, 2, 3];
+    //
+    // shuffle(arr);
+    // shuffle(arr);
+    // shuffle(arr);
+
+
+    // function getAverageAge(arr){
+    //     let ages = arr.map(item =>item.age);
+    //     let aver = 0;
+    //     for (let num of ages) {
+    //         aver += num;
+    //     }
+    //     return aver/ages.length;
+    //
+    //     //or
+    //
+    //     return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+    // }
+    //
+    // let vasya = { name: "Вася", age: 25 };
+    // let petya = { name: "Петя", age: 30 };
+    // let masha = { name: "Маша", age: 29 };
+    //
+    // let arr = [ vasya, petya, masha ];
+    //
+    // alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+
+
+    function unique(arr) {
+        return arr.reduce((acc, curr) => {
+            if (!acc.includes(curr)) {
+                acc.push(curr)
+            }
+            return acc;
+        }, [])
+    }
+
+    let strings = ["кришна", "кришна", "харе", "харе",
+        "харе", "харе", "кришна", "кришна", ":-O"
+    ];
+
+    alert(unique(strings)); // кришна, харе, :-O
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

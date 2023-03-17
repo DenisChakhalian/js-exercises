@@ -1,0 +1,95 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function sum(a) {
+    //     return function (b) {
+    //         return a + b;
+    //     }
+    // }
+    //
+    // alert(sum(1)(2));
+    // alert(sum(5)(-1));
+
+
+    // function inBetween(start, end) {
+    //     return function (el) {
+    //         return el >= start && el <= end;
+    //     }
+    // }
+    //
+    // function inArray(arr) {
+    //     return function (el) {
+    //         return arr.includes(el);
+    //         // return arr.indexOf(el) !== -1;
+    //
+    //     }
+    // }
+    //
+    // let arr = [1, 2, 3, 4, 5, 6, 7];
+    //
+    // alert(arr.filter(inBetween(3, 6))); // 3,4,5,6
+    //
+    // alert(arr.filter(inArray([1, 2, 10]))); // 1,2
+
+    // function byField(fieldName) {
+    //     return function (a, b) {
+    //         return a[fieldName] > b[fieldName] ? 1 : -1;
+    //     }
+    // }
+    //
+    // let users = [
+    //     {name: "John", age: 20, surname: "Johnson"},
+    //     {name: "Pete", age: 18, surname: "Peterson"},
+    //     {name: "Ann", age: 19, surname: "Hathaway"}
+    // ];
+    //
+    // users.sort(byField('name'));
+    // users.forEach(user => alert(user.name));
+    // users.sort(byField('age'));
+    // users.forEach(user => alert(user.name));
+
+    // function makeArmy() {
+    //     let shooters = [];
+    //
+    //
+    //     for (let i = 0; i < 10; i++) {
+    //         let shooter = function() { // функция shooter
+    //             alert( i ); // должна выводить порядковый номер
+    //         };
+    //         shooters.push(shooter);
+    //     }
+    //
+    //     //or
+    //
+    //     let i = 0;
+    //     while (i < 10) {
+    //         let j = i;
+    //         let shooter = function() { // функция shooter
+    //             alert( j ); // должна выводить порядковый номер
+    //         };
+    //         shooters.push(shooter);
+    //         i++;
+    //     }
+    //
+    //     return shooters;
+    // }
+    //
+    // let army = makeArmy();
+    //
+    // army[0](); // у 0-го стрелка будет номер 10
+    // army[5]();
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+
+
+<body>
+
+<html>
+<body><textarea style="width:200px; height: 60px;" id="area" placeholder="Напишите сообщение здесь"></textarea>
+<br>
+<button id="clear">Очистить</button>
+
+<script>
+
+    area.addEventListener("input", event => {
+        localStorage.setItem("massage", area.value)
+    })
+
+    area.value = localStorage.getItem("massage");
+
+    clear.addEventListener("click", event => {
+        localStorage.clear();
+        area.value = "";
+    })
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

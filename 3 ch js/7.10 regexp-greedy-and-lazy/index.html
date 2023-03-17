@@ -1,0 +1,33 @@
+<!doctype html>
+
+
+<body>
+
+<html>
+<body>
+
+<script>
+
+//     let regexp = /<!--.*?-->/gs;
+//
+//     let str = `... <!-- My -- comment
+//  test --> ..  <!----> ..
+// `;
+//
+//     alert( str.match(regexp) ); // '<!-- My -- comment \n test -->', '<!---->'
+
+let regexp = /<[^<>]+>/g;
+
+let str = '<> <a href="/"> <input type="radio" checked> <b>';
+
+alert( str.match(regexp) ); // '<a href="/">', '<input type="radio" checked>', '<b>'
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // //my joke
+    //
+    // function topSalary1(obj) {
+    //     return Object.keys(obj).length !== 0 ? Object.entries(obj).reduce((acc, curr) => {
+    //         let [name, sal] = curr;
+    //         if (acc.sal < sal) {
+    //             acc = {
+    //                 name,
+    //                 sal
+    //             };
+    //         }
+    //         console.log(acc);
+    //         return acc;
+    //     }, {name: "", sal: 0,}).name : null
+    // }
+    //
+    // //or
+    //
+    // function topSalary2(salaries) {
+    //
+    //     let max = 0;
+    //     let maxName = null;
+    //
+    //     for(const [name, salary] of Object.entries(salaries)) {
+    //         if (max < salary) {
+    //             max = salary;
+    //             maxName = name;
+    //         }
+    //     }
+    //
+    //     return maxName;
+    // }
+    //
+    // let salaries = {
+    //     "John": 100,
+    //     "Pete": 300,
+    //     "Mary": 250
+    // };
+    //
+    // function bench(f) {
+    //     let start = Date.now();
+    //     for (let i = 0; i < 100000; i++) f(salaries);
+    //     return Date.now() - start;
+    // }
+    //
+    // alert( 'Время my: ' + bench(topSalary1) + 'мс' );
+    // alert( 'Время teacher: ' + bench(topSalary2) + 'мс' );
+
+    // alert(new Date(2012,1,20,3,12));
+
+    // let date = new Date(2012, 0, 3);  // 3 января 2012 года
+    // function getWeekDay(date) {
+    //     let days = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
+    //     return days[date.getUTCDay()];
+    // }
+    //
+    // alert( getWeekDay(date) );
+    // let date2 = new Date(2014, 0, 3); // 3 января 2014 года
+    // alert( getWeekDay(date2) ); // ПТ
+
+    // function getLocalDay(date) {
+    //     return date.getUTCDay()+1;
+    // }
+    //
+    // let date = new Date(2012, 0, 3);  // 3 января 2012 года
+    // alert( getLocalDay(date) );       // вторник, нужно показать 2
+    //
+    // //or
+    //
+    // function getLocalDay(date) {
+    //
+    //     let day = date.getDay();
+    //
+    //     if (day == 0) { // день недели 0 (воскресенье) в европейской нумерации будет 7
+    //         day = 7;
+    //     }
+    //
+    //     return day;
+    // }
+
+    // let date = new Date(2015, 0, 2);
+    //
+    // function getDateAgo(date, days) {
+    //     let newDate = new Date(+date - days * 24 * 60 * 60 * 1000);  //day to ms
+    //     return newDate.getDate();
+    // }
+    // //or
+    // function getDateAgo(date, days) {
+    //     let dateCopy = new Date(date);
+    //
+    //     dateCopy.setDate(date.getDate() - days);
+    //     return dateCopy.getDate();
+    // }
+    //
+    // alert(getDateAgo(date, 1)); // 1, (1 Jan 2015)
+    // alert(getDateAgo(date, 2)); // 31, (31 Dec 2014)
+    // alert(getDateAgo(date, 365)); // 2, (2 Jan 2014)
+
+    // function getLastDayOfMonth(year, month) {
+    //     let date = new Date(year, month, 27);
+    //     for(let i = 1; date.getMonth()===month; i++) {
+    //         date.setDate(date.getDate() + 1);
+    //     }
+    //     date.setDate(date.getDate()-1)
+    //     return date.getDate();
+    // }
+    //or
+    // function getLastDayOfMonth(year, month) {
+    //     let date = new Date(year, month + 1, 0);
+    //     return date.getDate();
+    // }
+    //
+    // alert(getLastDayOfMonth(2012, 1));
+    // alert(getLastDayOfMonth(2022, 2));
+    // alert(getLastDayOfMonth(2013, 10));
+
+
+    // function getSecondsToday() {
+    //     let hours = new Date().getHours()*3600;
+    //     let minutes = new Date().getMinutes()*60;
+    //     let seconds = new Date().getSeconds();
+    //     return hours + minutes + seconds;
+    // }
+    //
+    // alert(getSecondsToday());
+    //
+    // //or
+    // function getSecondsToday() {
+    //     let d = new Date();
+    //     return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+    // }
+    // //2or
+    // function getSecondsToday() {
+    //     let now = new Date();
+    //
+    //     // создаём объект с текущими днём/месяцем/годом
+    //     let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    //
+    //     let diff = now - today; // разница в миллисекундах
+    //     return Math.round(diff / 1000); // получаем секунды
+    // }
+    //
+    // alert( getSecondsToday() );
+
+    // function getSecondsToTomorrow() {
+    //     let hours = new Date().getHours() * 3600;
+    //     let minutes = new Date().getMinutes() * 60;
+    //     let seconds = new Date().getSeconds();
+    //     return 24 * 3600 - hours - minutes - seconds;
+    // }
+    //
+    // alert(getSecondsToTomorrow());
+    //
+    // //or
+    //
+    // function getSecondsToTomorrow() {
+    //     let now = new Date();
+    //
+    //     // завтрашняя дата
+    //     let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+    //
+    //     let diff = tomorrow - now; // разница в миллисекундах
+    //     return Math.round(diff / 1000); // преобразуем в секунды
+    // }
+    //
+    // //or2
+    // function getSecondsToTomorrow() {
+    //     let now = new Date();
+    //     let hour = now.getHours();
+    //     let minutes = now.getMinutes();
+    //     let seconds = now.getSeconds();
+    //     let totalSecondsToday = (hour * 60 + minutes) * 60 + seconds;
+    //     let totalSecondsInADay = 86400;
+    //
+    //     return totalSecondsInADay - totalSecondsToday;
+    // }
+
+    function formatDate(date) {
+        let a = new Date() - date;
+        if (a < 1000) {
+            return `right now`
+        }
+
+        if (a < 1000 * 60) {
+            return `${a / 1000} sec. ago`
+        }
+
+        if (a < 1000 * 60 * 60) {
+            return `${a / 1000 / 60} min. ago`
+        } else {
+            return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear().toString().substring(2)} ${date.getHours()}:${date.getMinutes()}`
+        }
+    }
+
+    alert(formatDate(new Date(new Date - 1))); // "прямо сейчас"
+
+    alert(formatDate(new Date(new Date - 30 * 1000))); // "30 сек. назад"
+
+    alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 мин. назад"
+
+    // вчерашняя дата вроде 31.12.2016, 20:00
+    alert(formatDate(new Date(new Date - 86400 * 1000)));
+    or https://learn.javascript.ru/date#formatirovanie-otnositelnoy-daty
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    let animals = ["тигр", "ёж", "енот", "ехидна", "АИСТ", "ЯК"];
+
+    let collator = new Intl.Collator("ru", {
+        sensitivity: "base"
+    });
+
+    animals.sort(function(previousValue, currentValue) {
+        return collator.compare(previousValue, currentValue);
+    });
+
+
+    alert(animals); // АИСТ,ёж,енот,ехидна,тигр,ЯК
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

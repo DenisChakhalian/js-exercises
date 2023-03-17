@@ -1,0 +1,111 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // let user = {
+    //     name: "John"
+    // };
+    //
+    // function wrap(target) {
+    //     return new Proxy(target, {
+    //         get (target, phrase) {
+    //             if(target[phrase] === undefined) {
+    //                 throw new Error("Ошибка: такого свойства не существует");
+    //             }
+    //
+    //             return target[phrase];
+    //         }
+    //     });
+    // }
+    // //or
+    // // function wrap(target) {
+    // //     return new Proxy(target, {
+    // //         get(target, prop, receiver) {
+    // //             if (prop in target) {
+    // //                 return Reflect.get(target, prop, receiver);
+    // //             } else {
+    // //                 throw new ReferenceError(`Свойство не существует: "${prop}"`)
+    // //             }
+    // //         }
+    // //     });
+    // // }
+    //
+    // user = wrap(user);
+    //
+    // try {
+    //     alert(user.name); // John
+    // } catch(e) { alert(e.message); }
+    //
+    // try {
+    //     alert(user.age);
+    // } catch(e) { alert(e.message); }
+    //
+    // try {
+    //     alert(user.name); // John
+    // } catch(e) { alert(e.message); }
+
+    // let array = [1, 2, 3];
+    //
+    // array = new Proxy(array, {
+    //     get(array, phrase) {
+    //         if (phrase < 0) {
+    //             return array[array.length + +phrase];
+    //         }
+    //         return array[phrase];
+    //     }
+    // });
+    // //or
+    // // array = new Proxy(array, {
+    // //     get(target, prop, receiver) {
+    // //         if (prop < 0) {
+    // //             // даже если обращение к элементу идёт как arr[1]
+    // //             // prop является строкой, нужно преобразовать её к числу
+    // //             prop = +prop + target.length;
+    // //         }
+    // //         return Reflect.get(target, prop, receiver);
+    // //     }
+    // // });
+    //
+    // alert(array[-1]); // 3
+    // alert(array[-2]); // 2
+
+    let handlers = Symbol('handlers');
+
+    function makeObservable(target) {
+        target[handlers] = [];
+        target.observe = function(handler) {
+            this[handlers].push(handler);
+        };
+        return new Proxy(target, {
+            set(target, property, value, receiver) {
+                let success = Reflect.set(...arguments);
+                if (success) {
+                    target[handlers].forEach(handler => handler(property, value));
+                }
+                return success;
+            }
+        });
+    }
+
+    let user = {};
+    user = makeObservable(user);
+
+    user.observe((key, value) => {
+        alert(`SET ${key}=${value}`);
+    });
+
+    user.name = "John"; // выводит: SET name=John
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

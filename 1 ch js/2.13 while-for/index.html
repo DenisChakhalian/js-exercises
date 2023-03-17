@@ -1,0 +1,58 @@
+<!doctype html>
+
+<body>
+
+    <p>Перед скриптом...</p>
+
+    <script>
+
+        // for (let i = 2; i <= 10; i++) {
+        //     if (i % 2 == 0) {
+        //         alert(i);
+        //     }
+        // }
+
+        // let i = 0;
+        // while (i < 3) {
+        //     alert(`number ${i}!`);
+        //     i++;
+        // }
+
+
+        // while (1) {
+        //     let num = prompt('Your number?', '');
+        //     if (!num || num > 100) {
+        //         break;
+        //     }
+        //     else {
+        //         alert('Try again!')
+        //     }
+        // }
+
+        // let num;
+        // do {
+        //     num = prompt("Введите число больше 100?", 0);
+        // } while (num <= 100 && num);
+
+
+        let max = 67;
+        numeric: for (i = 2; i <= max; i++) {
+
+            for (j = 2; j < i; j++) {
+                if (i % j === 0) {
+                    continue numeric;
+                }
+            }
+            alert(i);
+        }
+
+
+    </script>
+
+    <!-- <script src="./script.js"></script> -->
+
+    <p>...После скрипта.</p>
+
+</body>
+
+</html>

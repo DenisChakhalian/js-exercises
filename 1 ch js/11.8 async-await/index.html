@@ -1,0 +1,90 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // async function loadJson(url) {
+    //     try {
+    //         let result = await fetch(url);
+    //         console.log(result)
+    //     } catch (err) {
+    //         alert(err)
+    //     }
+    //     // .then(async response => {
+    //     //     if (response.status === 200) {
+    //     //         return response.json();
+    //     //     } else {
+    //     //         throw new Error(response.status);
+    //     //     }
+    //     // })
+    // }
+    //
+    // loadJson('no-such-user.json'); // Error: 404
+    //
+    // async function loadJson(url) {
+    //     let response = await fetch(url); // (2)
+    //
+    //     if (response.status === 200) {
+    //         let json = await response.json(); // (3)
+    //         return json;
+    //     }
+    //
+    //     throw new Error(response.status);
+    // }
+    //
+    // loadJson('no-such-user.json')
+    //     .catch(alert);
+
+    class HttpError extends Error {
+        constructor(response) {
+            super(`${response.status} for ${response.url}`);
+            this.name = 'HttpError';
+            this.response = response;
+        }
+    }
+
+    async function loadJson(url) {
+        let response = await fetch(url);
+        if (response.status === 200) {
+            let json = await response.json();
+            return json;
+        }
+        throw new HttpError(response);
+    }
+
+    // Запрашивать логин, пока github не вернёт существующего пользователя.
+    async function demoGithubUser() {
+        while (true) {
+            try {
+                let name = prompt("Введите логин?", "iliakan");
+
+                let result = await loadJson(`https://api.github.com/users/${name}`)
+
+                alert(`Полное имя: ${result.name}.`);
+                return result;
+
+            } catch (err) {
+                if (err instanceof HttpError && err.response.status === 404) {
+                    alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
+                } else {
+                    throw err;
+                }
+            }
+        }
+
+    }
+
+    demoGithubUser();
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

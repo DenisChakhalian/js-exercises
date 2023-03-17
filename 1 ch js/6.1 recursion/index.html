@@ -1,0 +1,149 @@
+<!doctype html>
+
+<body>
+
+<p>Перед скриптом...</p>
+
+<script>
+
+    // function sumTo(n) {
+    //     let sum = 0;
+    //     for (let i = 1; i <= n; i++) {
+    //         sum += i;
+    //     }
+    //     return sum;
+    // }
+    //
+    // function sumTo(n) {
+    //     if(n===1) {
+    //         return n;
+    //     }
+    //     else {
+    //         return n + sumTo(n-1);
+    //     }
+    // }
+    //
+    // function sumTo(n) {
+    //     return (1+n)*n/2;
+    // }
+    //
+    // alert(sumTo(100)); // 5050
+
+    // function factorial(n) {
+    //     if(n===1) {
+    //         return n;
+    //     }
+    //     else {
+    //         return n * factorial(n-1);
+    //     }
+    // }
+    // alert( factorial(5) ); // 120
+
+    // function fib(n) {
+    //     const gold = 1.618;
+    //     return Math.round((gold ** n - (-gold) ** -n) / (2 * gold - 1));
+    // }
+    // or
+    // function fib(n) {
+    //     if (n <= 1) {
+    //         return n;
+    //     } else {
+    //         return fib(n - 1) + fib(n - 2);
+    //     }
+    // }
+    // or
+    // function fib(n) {
+    //     let a = 1;
+    //     let b = 1;
+    //     for (let i = 3; i <= n; i++) {
+    //         let c = a + b;
+    //         a = b;
+    //         b = c;
+    //     }
+    //     return b;
+    // }
+    //
+    //
+    // alert(fib(3)); // 2
+    // alert(fib(7)); // 13
+    // alert(fib(77)); // 5527939700884757
+
+    // function printList(list) {
+    //     for (let i = 0; ; i++) {
+    //         alert(list.value);
+    //         list = list.next;
+    //         if (list === null) {
+    //             break;
+    //         }
+    //     }
+    // }
+    // or
+    // function printList(list) {
+    //     let tmp = list;
+    //
+    //     while (tmp) {
+    //         alert(tmp.value);
+    //         tmp = tmp.next;
+    // }
+    //
+    // function printList(list) {
+    //     alert(list.value);
+    //     if(list.next) {
+    //         printList(list.next);
+    //     }
+    // }
+    //
+    // let list = {
+    //     value: 1,
+    //     next: {
+    //         value: 2,
+    //         next: {
+    //             value: 3,
+    //             next: {
+    //                 value: 4,
+    //                 next: null
+    //             }
+    //         }
+    //     }
+    // };
+    //
+    // printList(list);
+
+    function printListBack(list) {
+        let arr = [];
+        let tmp = list;
+        while (tmp) {
+            arr.push(tmp.value);
+            tmp = tmp.next;
+        }
+        for (let i = arr.length - 1; i >= 0; i--) {
+            alert(arr[i]);
+        }
+    }
+
+    let list = {
+        value: 1,
+        next: {
+            value: 2,
+            next: {
+                value: 3,
+                next: {
+                    value: 4,
+                    next: null
+                }
+            }
+        }
+    };
+    console.log(list);
+    printListBack(list);
+
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--    <style>-->
+    <!--        .view,-->
+    <!--        .edit {-->
+    <!--            height: 150px;-->
+    <!--            width: 400px;-->
+    <!--            font-family: sans-serif;-->
+    <!--            font-size: 14px;-->
+    <!--            display: none;-->
+    <!--        }-->
+
+    <!--        .view {-->
+    <!--            /* padding + border = 3px */-->
+    <!--            padding: 2px;-->
+    <!--            border: 1px solid black;-->
+    <!--            display: block;-->
+    <!--        }-->
+
+    <!--        .edit {-->
+    <!--            /* замена внутреннего отступа рамкой (по-прежнему 3px, и содержимое не смещается) */-->
+    <!--            border: 3px solid blue;-->
+    <!--            padding: 0px;-->
+    <!--        }-->
+
+    <!--        .edit:focus {-->
+    <!--            /* удаление обводки фокуса в Safari */-->
+    <!--            outline: none;-->
+    <!--        }-->
+    <!--    </style>-->
+
+    <style>
+        /*#id {*/
+        /*    display: inline-block;*/
+        /*    cursor: pointer;*/
+        /*    margin: 0;*/
+        /*}*/
+
+        /*#id:focus {*/
+        /*    outline: 1px dashed black;*/
+        /*}*/
+
+        th {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        td {
+            width: 150px;
+            white-space: nowrap;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .nw {
+            background-color: #999;
+        }
+
+        .n {
+            background-color: #03f;
+            color: #fff;
+        }
+
+        .ne {
+            background-color: #ff6;
+        }
+
+        .w {
+            background-color: #ff0;
+        }
+
+        .c {
+            background-color: #60c;
+            color: #fff;
+        }
+
+        .e {
+            background-color: #09f;
+            color: #fff;
+        }
+
+        .sw {
+            background-color: #963;
+            color: #fff;
+        }
+
+        .s {
+            background-color: #f60;
+            color: #fff;
+        }
+
+        .se {
+            background-color: #0c3;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!--<ul>-->
+<!--    <li>Кликните на div ниже, чтобы отредактировать текст.</li>-->
+<!--    <li>Нажатие на Enter или потеря фокуса с ввода сохранят содержимое.</li>-->
+<!--</ul>-->
+<!--HTML-код разрешён.-->
+<!--<div id="view" tabindex="0" class="view">Текст<strong>sdfg</strong></div>-->
+
+<!--<p>Кликните по "изображению" мыши и перемещайте её с помощью клавиш со стрелками.</p>-->
+
+<!--<pre id="mouse">-->
+<!-- _   _-->
+<!--(q\_/p)-->
+<!-- /. .\-->
+<!--=\_t_/=   __-->
+<!-- /   \   (-->
+<!--((   ))   )-->
+<!--/\) (/\  /-->
+<!--\  Y  /-'-->
+<!-- nn^nn-->
+<!--</pre>-->
+
+<p>Кликните на ячейку таблицы, чтобы отредактировать её. Нажмите ОК или ОТМЕНА, когда закончите.</p>
+
+<table id="bagua-table">
+    <tr>
+        <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
+    </tr>
+    <tr>
+        <td class="nw"><strong>Северо-Запад</strong>
+            <br>Металл
+            <br>Серебро
+            <br>Старейшины
+        </td>
+        <td class="n"><strong>Север</strong>
+            <br>Вода
+            <br>Синий
+            <br>Перемены
+        </td>
+        <td class="ne"><strong>Северо-Восток</strong>
+            <br>Земля
+            <br>Жёлтый
+            <br>Направление
+        </td>
+    </tr>
+    <tr>
+        <td class="w"><strong>Запад</strong>
+            <br>Металл
+            <br>Золото
+            <br>Молодость
+        </td>
+        <td class="c"><strong>Центр</strong>
+            <br>Всё
+            <br>Пурпурный
+            <br>Гармония
+        </td>
+        <td class="e"><strong>Восток</strong>
+            <br>Дерево
+            <br>Синий
+            <br>Будущее
+        </td>
+    </tr>
+    <tr>
+        <td class="sw"><strong>Юго-Запад</strong>
+            <br>Земля
+            <br>Коричневый
+            <br>Спокойствие
+        </td>
+        <td class="s"><strong>Юг</strong>
+            <br>Огонь
+            <br>Оранжевый
+            <br>Слава
+        </td>
+        <td class="se"><strong>Юго-Восток</strong>
+            <br>Дерево
+            <br>Зеленый
+            <br>Роман
+        </td>
+    </tr>
+
+</table>
+
+
+<script>
+
+    // let reader = document.createElement("textarea");
+    // reader.classList.add("edit");
+    //
+    // view.addEventListener("focus", (event) => {
+    //     reader.style.display = "block";
+    //     reader.value = view.innerHTML;
+    //     view.before(reader);
+    //     view.style.display = "none";
+    //     reader.focus();
+    // });
+    //
+    // reader.addEventListener("blur", (event) => {
+    //     view.style.display = "block";
+    //     view.innerHTML = reader.value;
+    //     reader.style.display = "none";
+    // })
+    //
+    // reader.onkeydown = function(event) {
+    //     if (event.key === 'Enter') {
+    //         this.blur();
+    //     }
+    // };
+    //
+    // //or https://plnkr.co/edit/p8wreJpjsvpmmqiC?p=preview&preview
+
+
+    // function move(id) {
+    //     id.tabIndex = 0;
+    //
+    //     id.addEventListener("focus", () => {
+    //         id.style.left = id.getBoundingClientRect().left + 'px';
+    //         id.style.top = id.getBoundingClientRect().top + 'px';
+    //         id.style.position = 'fixed';
+    //     })
+    //     id.addEventListener("keydown", (event) => {
+    //         switch (event.key) {
+    //             case 'ArrowLeft':
+    //                 id.style.left = parseInt(id.style.left) - id.offsetWidth + 'px';
+    //                 return false;
+    //             case 'ArrowUp':
+    //                 id.style.top = parseInt(id.style.top) - id.offsetHeight + 'px';
+    //                 return false;
+    //             case 'ArrowRight':
+    //                 id.style.left = parseInt(id.style.left) + id.offsetWidth + 'px';
+    //                 return false;
+    //             case 'ArrowDown':
+    //                 id.style.top = parseInt(id.style.top) + id.offsetHeight + 'px';
+    //                 return false;
+    //         }
+    //     })
+    // }
+    //
+    // move(mouse);
+
+    let table = document.getElementById("bagua-table")
+
+    let reader = 0;
+
+    table.addEventListener("click", (event) => {
+        let td = event.target.closest('td');
+        if (!td) return;
+        if (!table.contains(td)) return;
+        if (reader) return;
+
+        let save = document.createElement("button");
+        save.innerHTML = "OK";
+        save.id = "save";
+        save.style.position = "absolute";
+        let cancel = document.createElement("button");
+        cancel.innerHTML = "cancel";
+        cancel.id = "cancel";
+        cancel.style.position = "absolute";
+        reader = document.createElement("textarea");
+        reader.value = td.innerHTML;
+        reader.style.width = td.getBoundingClientRect().width - 10 + "px";
+        reader.style.height = td.getBoundingClientRect().height - 10 + "px";
+        reader.style.overflow = "hidden";
+        reader.style.resize = "none";
+
+        td.replaceWith(reader);
+        reader.after(save, cancel);
+        save.style.left = reader.getBoundingClientRect().left + "px";
+        cancel.style.left = reader.getBoundingClientRect().left + save.offsetWidth + "px";
+        save.style.top = reader.getBoundingClientRect().bottom + "px";
+        cancel.style.top = reader.getBoundingClientRect().bottom + "px";
+        reader.focus();
+
+        save.addEventListener("click", (event) => {
+            td.innerHTML = reader.value;
+            save.remove()
+            cancel.remove();
+            reader.replaceWith(td);
+            reader = 0;
+        })
+
+        cancel.addEventListener("click", (event) => {
+            save.remove()
+            cancel.remove();
+            reader.replaceWith(td);
+            reader = 0;
+        })
+    })
+
+</script>
+
+<!-- <script src="./script.js"></script> -->
+
+<br>
+<br>
+<br>
+<br>
+
+<p>...После скрипта.</p>
+
+</body>
+
+</html>
